@@ -24,8 +24,10 @@
   }
   function nombre(txt) {
     if (!txt) return 0;
-    var m = String(txt).replace(/[^\d,.]/g, '').replace(',', '.');
-    var v = parseFloat(m);
+    // Format français : « 6 139,99 » (espaces/insécables comme séparateurs de milliers).
+    var m = String(txt).replace(/\u00a0/g, ' ').match(/(\d[\d ]*[.,]\d{2})/);
+    if (!m) return 0;
+    var v = parseFloat(m[1].replace(/ /g, '').replace(',', '.'));
     return isNaN(v) ? 0 : v;
   }
 
@@ -82,7 +84,9 @@
     var titre = carte.querySelector('.product_title, .elay-product__title, h1, h2, h3');
     var nom = titre ? titre.textContent.trim() : document.title;
 
-    var prixEl = carte.querySelector('.elay-product__price, .price');
+    // Le bloc prix contient l'ancien prix, le HT et le TTC : on prend le HT courant.
+    var prixEl = carte.querySelector('.elay-price__ht') ||
+                 carte.querySelector('.elay-product__price, .price');
     var prix = prixEl ? nombre(prixEl.textContent) : 0;
 
     var q = form && form.querySelector('[name="quantity"]');
