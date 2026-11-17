@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <rect width="800" height="800" fill="#F4F6F8"/>
+  <g fill="none" stroke="#B9C3D2" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="230" y="290" width="340" height="250" rx="24"/>
+    <circle cx="400" cy="415" r="62"/>
+    <path d="M330 290l26-44h88l26 44"/>
+  </g>
+  <text x="400" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" fill="#5B6577" letter-spacing="1">Photo sur demande</text>
+</svg>
